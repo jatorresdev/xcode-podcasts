@@ -42,9 +42,17 @@ class PodcastsListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PodcastsTableCell", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PodcastsTableCell", for: indexPath) as! PodcastTableViewCell
+        
         let podcast = podcasts[(indexPath as NSIndexPath).row] as? NSDictionary
-        cell.textLabel?.text = podcast?["serie"] as? String
+        cell.titlePodcast.text = podcast?["serie"] as? String
+        cell.descriptionPodcast.text = podcast?["descripcion"] as? String
+        
+        let image = podcast?["imagen"] as? NSDictionary
+        
+        let url = NSURL(string: image?["src"] as! String)
+        let data = NSData(contentsOf: url as! URL)
+        cell.imagePodcast.image = UIImage(data: data as! Data)
         
         return cell
     }
