@@ -3,10 +3,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Podcasts-->
         <scene sceneID="jEo-Ui-PoY">
             <objects>
                 <tableViewController id="Jq3-Xi-BzN" customClass="PodcastsListTableViewController" customModule="Podcasts" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,30 +20,37 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PodcastsTableCell" rowHeight="160" id="L73-d7-tsE" customClass="PodcastTableViewCell" customModule="Podcasts" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L73-d7-tsE" id="bv6-0b-4g2">
-                                    <frame key="frameInset" width="375" height="159"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" tableViewCell="L73-d7-tsE" id="bv6-0b-4g2">
+                                    <frame key="frameInset" width="375" height="159.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mnO-6E-T12">
-                                            <frame key="frameInset" minX="8" minY="8" width="140" maxY="11"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mnO-6E-T12">
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="mnO-6E-T12" secondAttribute="height" multiplier="1:1" id="wcT-OI-ZTg"/>
+                                                <constraint firstAttribute="height" constant="140" id="zWI-ac-rkJ"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykB-ym-m19">
-                                            <frame key="frameInset" minX="156" minY="16" height="14.69%" maxX="8"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhC-Tr-Acv">
+                                            <frame key="frameInset" minX="156" minY="51" width="211" height="97"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</string>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykB-ym-m19">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhC-Tr-Acv">
-                                            <frame key="frameInset" minX="156" minY="60" width="211" height="91"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ykB-ym-m19" firstAttribute="trailing" secondItem="bv6-0b-4g2" secondAttribute="trailingMargin" id="6zZ-Ho-VQi"/>
+                                        <constraint firstItem="mnO-6E-T12" firstAttribute="top" secondItem="bv6-0b-4g2" secondAttribute="topMargin" id="GAm-F4-87p"/>
+                                        <constraint firstItem="ykB-ym-m19" firstAttribute="top" secondItem="bv6-0b-4g2" secondAttribute="topMargin" id="Jxh-46-Y6d"/>
+                                        <constraint firstItem="mnO-6E-T12" firstAttribute="leading" secondItem="bv6-0b-4g2" secondAttribute="leadingMargin" id="YFb-on-nGb"/>
+                                        <constraint firstItem="ykB-ym-m19" firstAttribute="leading" secondItem="mnO-6E-T12" secondAttribute="trailing" constant="8" id="pSZ-p3-OUN"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptionPodcast" destination="GhC-Tr-Acv" id="kai-12-loE"/>
@@ -55,7 +64,7 @@
                             <outlet property="delegate" destination="Jq3-Xi-BzN" id="0Ge-6c-Oar"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="NQA-yu-Bdv"/>
+                    <navigationItem key="navigationItem" title="Podcasts" id="NQA-yu-Bdv"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqA-5O-gw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

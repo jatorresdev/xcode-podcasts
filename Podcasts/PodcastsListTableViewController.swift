@@ -46,7 +46,7 @@ class PodcastsListTableViewController: UITableViewController {
         
         let podcast = podcasts[(indexPath as NSIndexPath).row] as? NSDictionary
         cell.titlePodcast.text = podcast?["serie"] as? String
-        cell.descriptionPodcast.text = podcast?["descripcion"] as? String
+        cell.descriptionPodcast.text = (podcast?["descripcion"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let image = podcast?["imagen"] as? NSDictionary
         
