@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MediaPlayer
 import Moya
 
 class PodcastDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    var mediaPlayer: MPMoviePlayerController = MPMoviePlayerController()
+    
     var podcast: NSDictionary!
     var episodesPodcast = NSArray()
     
@@ -44,10 +47,10 @@ class PodcastDetailViewController: UIViewController, UITableViewDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -62,6 +65,18 @@ class PodcastDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episode = episodesPodcast[(indexPath as NSIndexPath).row] as? NSDictionary
+        mediaPlayer.stop()
+        mediaPlayer.contentURL = NSURL(string: episode?.value(forKey: "audio") as! String) as URL!
+        mediaPlayer.play()
+        if let cell = tableView.cellForRow(at: indexPath) as? EpisodeTableViewCell {
+            cell.playEpisode.text = "◾️"
+        }
+    }
+    
+    
     
     fileprivate func showAlert(_ title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
