@@ -131,7 +131,7 @@ class PodcastsListTableViewController: UITableViewController {
                     if let json = try response.mapJSON() as? NSDictionary {
                         self.podcasts = (json.value(forKey: "podcasts") as? NSArray)!
                     } else {
-                        self.showAlert("Obtener podcasts", message: "No es posible obtener los podcasts de Radiónica ----")
+                        self.showAlert("Obtener podcasts", message: "No es posible obtener los podcasts de Radiónica")
                     }
                 } catch {
                     self.showAlert("Obtener podcasts", message: "No es posible obtener los podcasts de Radiónica")

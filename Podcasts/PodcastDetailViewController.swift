@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import Moya
 
-class PodcastDetailViewController: UIViewController {
+class PodcastDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     var podcast: NSDictionary!
+    var episodesPodcast = NSArray()
     
     @IBOutlet weak var imagePodcastDetail: UIImageView!
     @IBOutlet weak var descriptionPodcastDetail: UITextView!
+    @IBOutlet weak var episodesPodcastTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = podcast.value(forKey: "serie") as? String
+        episodesPodcastTableView.delegate = self
+        episodesPodcastTableView.dataSource = self
         
+        self.title = podcast.value(forKey: "serie") as? String
         
         // Carga Image
         let image = podcast.value(forKey: "imagen") as? NSDictionary
@@ -27,14 +33,66 @@ class PodcastDetailViewController: UIViewController {
         imagePodcastDetail.image = UIImage(data: data as! Data)
         
         descriptionPodcastDetail.text = (podcast.value(forKey: "descripcion") as? String)?.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        // Do any additional setup after loading the view.
+        
+        // Carga episodios
+        let podcastId = Int((podcast.value(forKey: "id") as? String)!)
+        downloadEpisodePodcast(podcastId: podcastId!)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return episodesPodcast.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodesPodcastTableCell") as! EpisodeTableViewCell
+        let episode = episodesPodcast[(indexPath as NSIndexPath).row] as? NSDictionary
+        cell.titleEpisode.text = episode?["episodio"] as? String
+        cell.playEpisode.text = "▶️"
+        
+        return cell
+    }
+    
+    fileprivate func showAlert(_ title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(ok)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func downloadEpisodePodcast(podcastId: Int) {
+        _ = PodcastsRadionicaProvider.request(.episodesPodcast(podcastId)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    if let json = try response.mapJSON() as? NSDictionary {
+                        self.episodesPodcast = (json.value(forKey: "episodiosPodcast") as? NSArray)!
+                    } else {
+                        self.showAlert("Obtener episodios", message: "No es posible obtener los episodios de \(self.podcast.value(forKey: "serie")) en Radiónica")
+                    }
+                } catch {
+                    self.showAlert("Obtener episodios", message: "No es posible obtener los episodios de \(self.podcast.value(forKey: "serie")) en Radiónica")
+                }
+                self.episodesPodcastTableView.reloadData()
+            case let .failure(error):
+                guard let error = error as? CustomStringConvertible else {
+                    break
+                }
+                self.showAlert("Obtener episodios \(self.podcast.value(forKey: "serie"))", message: error.description)
+            }
+        }
+    }
+    
     
 
     /*

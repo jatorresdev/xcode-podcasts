@@ -27,7 +27,7 @@ let PodcastsRadionicaProvider = MoyaProvider<PodcastsRadionica>(plugins: [
 
 public enum PodcastsRadionica {
     case podcasts
-    case episodesPodcast
+    case episodesPodcast(Int)
     
 }
 
@@ -64,7 +64,7 @@ extension PodcastsRadionica: TargetType{
         switch self {
         case .podcasts:
             return "{\"id\": \"Podcast Id\", \"serie\": \"Podcast Nombre\", \"descripcion\": \"Podcast Descripcion\", \"imagen\": {\"src\": \"Imagen src\", \"alt\": \"Imagen alt\"}}".data(using: String.Encoding.utf8)!
-        case .episodesPodcast(let id):
+        case .episodesPodcast(_):
             return "{\"id\": \"Episodio Id\", \"episodio\": \"Episodio Nombre\", \"serie\": \"Podcast Nombre\", \"descripcion\": \"Episodio Descripcion\", \"audio\": \"Episodio Audio\", \"imagen\": {\"src\": \"Imagen src\", \"alt\": \"Imagen alt\"}}".data(using: String.Encoding.utf8)!
         }
     }

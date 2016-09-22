@@ -84,30 +84,59 @@
                                     <constraint firstAttribute="width" secondItem="p1X-oC-taD" secondAttribute="height" multiplier="1:1" id="ib6-Fg-xHt"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHa-nN-Gfp">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHa-nN-Gfp">
                                 <frame key="frameInset" minX="144" minY="72" height="20.17%" maxX="16"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="WHa-nN-Gfp" secondAttribute="height" multiplier="43:24" id="ntr-ZK-9Aa"/>
-                                    <constraint firstAttribute="width" constant="215" id="qxM-Jh-3EC"/>
-                                    <constraint firstAttribute="height" constant="120" id="sxq-Pt-ObP"/>
-                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XJf-ir-9t6">
+                                <frame key="frameInset" minX="16" minY="200" width="343" height="447"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EpisodesPodcastTableCell" id="Ftk-ti-pLe" customClass="EpisodeTableViewCell" customModule="Podcasts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ftk-ti-pLe" id="H7D-gJ-pU2">
+                                            <frame key="frameInset" width="343" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="▶️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BML-pE-DxS">
+                                                    <frame key="frameInset" minX="8" minY="11" width="28" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h3-LV-DNK">
+                                                    <frame key="frameInset" minX="44" minY="11" width="291" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playEpisode" destination="BML-pE-DxS" id="EHq-AZ-uhV"/>
+                                            <outlet property="titleEpisode" destination="7h3-LV-DNK" id="FEL-hQ-Cm8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WHa-nN-Gfp" firstAttribute="top" secondItem="epl-cK-YEY" secondAttribute="bottom" constant="8" id="0vz-W3-bfF"/>
                             <constraint firstItem="p1X-oC-taD" firstAttribute="leading" secondItem="s3F-Aq-RBC" secondAttribute="leadingMargin" id="iUl-Vp-Wj8"/>
-                            <constraint firstItem="WHa-nN-Gfp" firstAttribute="leading" secondItem="p1X-oC-taD" secondAttribute="trailing" constant="8" id="kgz-Gm-hwe"/>
                             <constraint firstItem="p1X-oC-taD" firstAttribute="top" secondItem="epl-cK-YEY" secondAttribute="bottom" constant="8" id="l4T-dF-f2d"/>
-                            <constraint firstAttribute="trailing" secondItem="WHa-nN-Gfp" secondAttribute="trailing" constant="8" id="zCA-i4-gZd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="descriptionPodcastDetail" destination="WHa-nN-Gfp" id="ufG-Qf-H3v"/>
+                        <outlet property="episodesPodcastTableView" destination="XJf-ir-9t6" id="ggm-h7-Ffq"/>
                         <outlet property="imagePodcastDetail" destination="p1X-oC-taD" id="HWe-jL-fLt"/>
                     </connections>
                 </viewController>
