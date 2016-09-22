@@ -29,6 +29,21 @@ class PodcastsListTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "podcastDetail" {
+            
+            let podcastDetailViewController = segue.destination as! PodcastDetailViewController
+            let myIndexPath = self.tableView.indexPathForSelectedRow!
+            let row = myIndexPath.row
+            
+            podcastDetailViewController.podcast = podcasts[row] as? NSDictionary
+            
+        } else if segue.identifier == "anadirNota" {
+            // Parametros si es necesario
+            
+        }
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,10 +61,9 @@ class PodcastsListTableViewController: UITableViewController {
         
         let podcast = podcasts[(indexPath as NSIndexPath).row] as? NSDictionary
         cell.titlePodcast.text = podcast?["serie"] as? String
-        cell.descriptionPodcast.text = (podcast?["descripcion"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines)
         
+        // Carga Imagen
         let image = podcast?["imagen"] as? NSDictionary
-        
         let url = NSURL(string: image?["src"] as! String)
         let data = NSData(contentsOf: url as! URL)
         cell.imagePodcast.image = UIImage(data: data as! Data)
