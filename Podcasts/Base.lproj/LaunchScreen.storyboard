@@ -21,33 +21,41 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Podcasts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edw-b4-8gQ">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="124" id="45b-Xz-CN3"/>
+                                    <constraint firstAttribute="height" constant="50" id="bTR-8U-Hfm"/>
+                                    <constraint firstAttribute="width" constant="124" id="ohX-cN-BU7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versión 0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mc-hT-Wb0">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="Mfy-9u-Io3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desarrollada por Angel Torres" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eQ-Y7-QaI">
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podcasts" translatesAutoresizingMaskIntoConstraints="NO" id="z5v-Ry-qSK">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Unt-qi-Pql"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versión 0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mc-hT-Wb0">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="tVf-YC-XlM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2eQ-Y7-QaI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="7fk-P7-I3A"/>
-                            <constraint firstItem="edw-b4-8gQ" firstAttribute="centerX" secondItem="6Mc-hT-Wb0" secondAttribute="centerX" id="Gpv-TF-LVw"/>
-                            <constraint firstItem="edw-b4-8gQ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="268" id="JBx-MJ-5so"/>
-                            <constraint firstItem="edw-b4-8gQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Nra-wG-WR9"/>
-                            <constraint firstItem="6Mc-hT-Wb0" firstAttribute="top" secondItem="edw-b4-8gQ" secondAttribute="bottom" constant="14" id="bhF-cg-ZLz"/>
-                            <constraint firstItem="2eQ-Y7-QaI" firstAttribute="centerX" secondItem="6Mc-hT-Wb0" secondAttribute="centerX" id="dN6-ha-tPg"/>
-                            <constraint firstAttribute="bottom" secondItem="2eQ-Y7-QaI" secondAttribute="bottom" constant="20" symbolic="YES" id="h45-al-pyO"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="6Mc-hT-Wb0" secondAttribute="bottom" constant="288" id="o4V-tj-7PL"/>
+                            <constraint firstItem="edw-b4-8gQ" firstAttribute="centerX" secondItem="6Mc-hT-Wb0" secondAttribute="centerX" id="0ix-eq-a5q"/>
+                            <constraint firstItem="2eQ-Y7-QaI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="0ke-kh-Wtc"/>
+                            <constraint firstItem="z5v-Ry-qSK" firstAttribute="centerX" secondItem="edw-b4-8gQ" secondAttribute="centerX" id="AUQ-bu-S3Q"/>
+                            <constraint firstItem="2eQ-Y7-QaI" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="JNv-gk-fBy"/>
+                            <constraint firstItem="6Mc-hT-Wb0" firstAttribute="centerX" secondItem="2eQ-Y7-QaI" secondAttribute="centerX" id="P7u-RS-9KN"/>
+                            <constraint firstItem="z5v-Ry-qSK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="71" id="X4L-Es-fJn"/>
+                            <constraint firstItem="6Mc-hT-Wb0" firstAttribute="top" secondItem="edw-b4-8gQ" secondAttribute="bottom" constant="8" symbolic="YES" id="izY-Io-VTb"/>
+                            <constraint firstItem="z5v-Ry-qSK" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="148" id="kqV-zS-V0T"/>
+                            <constraint firstAttribute="bottom" secondItem="2eQ-Y7-QaI" secondAttribute="bottom" constant="20" symbolic="YES" id="lAw-G1-W2w"/>
+                            <constraint firstItem="edw-b4-8gQ" firstAttribute="top" secondItem="z5v-Ry-qSK" secondAttribute="bottom" constant="14" id="q6v-Eb-FgW"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -56,4 +64,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="podcasts" width="512" height="512"/>
+    </resources>
 </document>
