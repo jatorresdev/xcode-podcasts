@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import MediaPlayer
+import AVFoundation
 import Moya
 
 class PodcastDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
-    var mediaPlayer: MPMoviePlayerController = MPMoviePlayerController()
+    var mediaPlayer: AVAudioPlayer!
     
     var podcast: NSDictionary!
     var episodesPodcast = NSArray()
@@ -47,11 +47,6 @@ class PodcastDetailViewController: UIViewController, UITableViewDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return episodesPodcast.count
@@ -67,15 +62,33 @@ class PodcastDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        //tableView.deselectRow(at: indexPath, animated: true)
         self.episodesPodcastTableView.reloadData()
         
         let episode = episodesPodcast[(indexPath as NSIndexPath).row] as? NSDictionary
-        mediaPlayer.stop()
-        mediaPlayer.contentURL = NSURL(string: episode?.value(forKey: "audio") as! String) as URL!
-        mediaPlayer.play()
-        if let cell = tableView.cellForRow(at: indexPath) as? EpisodeTableViewCell {
-            cell.playEpisode.text = "⏹"
+    
+        if mediaPlayer != nil {
+            mediaPlayer.stop()
+            mediaPlayer = nil
+        }
+        
+        do {
+            let url = NSURL(string: episode?.value(forKey: "audio") as! String) as! URL
+            let data = NSData(contentsOf: url)
+            mediaPlayer = try AVAudioPlayer(data: data as! Data)
+            mediaPlayer.prepareToPlay()
+            mediaPlayer.volume = 1.0
+            mediaPlayer.play()
+            
+            if let cell = tableView.cellForRow(at: indexPath) as? EpisodeTableViewCell {
+                cell.playEpisode.text = "⏹"
+            }
+        } catch let error as NSError {
+            mediaPlayer = nil
+            
+            self.showAlert("Reproducción audio", message: error.description)
+        } catch {
+            self.showAlert("Reproducción audio", message: "No es posible reproducir el audio")
         }
     }
     

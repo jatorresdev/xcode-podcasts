@@ -135,6 +135,7 @@
 				TargetAttributes = {
 					3764F5291D9239DA00FB2621 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = WEFHXM4G6Y;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -350,6 +351,7 @@
 			baseConfigurationReference = 52DD1BFAA043550C5060EB87 /* Pods-Podcasts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WEFHXM4G6Y;
 				INFOPLIST_FILE = Podcasts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.angeltorres.Podcasts;
@@ -363,6 +365,7 @@
 			baseConfigurationReference = 98AE219057DC58E70878ECFC /* Pods-Podcasts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WEFHXM4G6Y;
 				INFOPLIST_FILE = Podcasts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.angeltorres.Podcasts;
