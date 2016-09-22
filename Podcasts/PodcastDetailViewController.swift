@@ -67,16 +67,17 @@ class PodcastDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.episodesPodcastTableView.reloadData()
+        
         let episode = episodesPodcast[(indexPath as NSIndexPath).row] as? NSDictionary
         mediaPlayer.stop()
         mediaPlayer.contentURL = NSURL(string: episode?.value(forKey: "audio") as! String) as URL!
         mediaPlayer.play()
         if let cell = tableView.cellForRow(at: indexPath) as? EpisodeTableViewCell {
-            cell.playEpisode.text = "◾️"
+            cell.playEpisode.text = "⏹"
         }
     }
-    
-    
     
     fileprivate func showAlert(_ title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
